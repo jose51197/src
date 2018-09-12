@@ -89,7 +89,8 @@ public class Vigenere implements Codificable{
     public String solicitarDatosExtra() {
         return "numero para codificacion";
     }
-
+    
+    @Override
     public void setDatosExtra(String datosExtra) {
         this.datosExtra = datosExtra;
     }

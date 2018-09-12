@@ -66,4 +66,9 @@ public class Trasposicion implements Codificable{
     public String toString(){
         return "Tipo de codificacion: Trasposicion";
     }
+
+    @Override
+    public void setDatosExtra(String datos) {
+       
+    }
 }
