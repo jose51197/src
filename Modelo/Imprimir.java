@@ -18,7 +18,6 @@ import java.io.PrintWriter;
 public class Imprimir {
     private String nombre;
     
-
     public Imprimir(String pNombre) {
         this.nombre = pNombre;
     }
