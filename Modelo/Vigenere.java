@@ -41,7 +41,7 @@ public class Vigenere implements Codificable{
     
     @Override
     public String toString(){
-        return "Tipo de codificacion: Vigenere";
+        return "Tipo de codificacion: Vigenere Prueba";
     }
     
 }
