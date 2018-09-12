@@ -74,6 +74,8 @@ public class Codificador extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         listaSeleccionados = new javax.swing.JList<>();
         listaImpresiones = new javax.swing.JComboBox<>();
+        code = new javax.swing.JButton();
+        decode = new javax.swing.JButton();
 
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texto.setText("jLabel1");
@@ -166,6 +168,20 @@ public class Codificador extends javax.swing.JFrame {
 
         listaImpresiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        code.setText("Codificar");
+        code.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codeActionPerformed(evt);
+            }
+        });
+
+        decode.setText("Decodificar");
+        decode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,7 +205,9 @@ public class Codificador extends javax.swing.JFrame {
                                 .addGap(0, 354, Short.MAX_VALUE)
                                 .addComponent(jLabel2))
                             .addComponent(jScrollPane4)))
-                    .addComponent(listaImpresiones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(listaImpresiones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(code, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(decode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -220,7 +238,11 @@ public class Codificador extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(decodificar))
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addComponent(decode)
+                        .addGap(18, 18, 18)
+                        .addComponent(code)
+                        .addGap(18, 18, 18)
                         .addComponent(listaImpresiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(imprimir)))
@@ -267,6 +289,14 @@ public class Codificador extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void decodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decodeActionPerformed
+        textDecodificado.setText(controller.codificar(textCodificado.getText()));
+    }//GEN-LAST:event_decodeActionPerformed
+
+    private void codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActionPerformed
+        textCodificado.setText(controller.codificar(textDecodificado.getText()));
+    }//GEN-LAST:event_codeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,7 +337,9 @@ public class Codificador extends javax.swing.JFrame {
     private javax.swing.JDialog PedirInfo;
     private javax.swing.JButton botonOk;
     private javax.swing.JButton cancel;
+    private javax.swing.JButton code;
     private javax.swing.JComboBox<String> codificaciones;
+    private javax.swing.JButton decode;
     private javax.swing.JButton decodificar;
     private javax.swing.JTextArea entrada;
     private javax.swing.JButton imprimir;
