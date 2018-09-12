@@ -9,6 +9,7 @@ import Controlador.ControladorCodificador;
 import Modelo.Imprimir;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,12 +60,6 @@ public class Codificador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PedirInfo = new javax.swing.JDialog();
-        texto = new javax.swing.JLabel();
-        botonOk = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        entrada = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         textCodificado = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -80,56 +75,6 @@ public class Codificador extends javax.swing.JFrame {
         listaImpresiones = new javax.swing.JComboBox<>();
         code = new javax.swing.JButton();
         decode = new javax.swing.JButton();
-
-        texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        texto.setText("jLabel1");
-
-        botonOk.setText("Ok");
-        botonOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOkActionPerformed(evt);
-            }
-        });
-
-        cancel.setText("Cancelar");
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-
-        entrada.setColumns(20);
-        entrada.setRows(5);
-        jScrollPane3.setViewportView(entrada);
-
-        javax.swing.GroupLayout PedirInfoLayout = new javax.swing.GroupLayout(PedirInfo.getContentPane());
-        PedirInfo.getContentPane().setLayout(PedirInfoLayout);
-        PedirInfoLayout.setHorizontalGroup(
-            PedirInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PedirInfoLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(PedirInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PedirInfoLayout.createSequentialGroup()
-                        .addComponent(botonOk)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
-                        .addComponent(cancel))
-                    .addComponent(jScrollPane3))
-                .addGap(3, 3, 3))
-        );
-        PedirInfoLayout.setVerticalGroup(
-            PedirInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PedirInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(PedirInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonOk)
-                    .addComponent(cancel))
-                .addContainerGap())
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -262,37 +207,45 @@ public class Codificador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
-        controller.seleccionar(codificaciones.getSelectedIndex());
+        controller.seleccionar(codificaciones.getSelectedIndex(),rootPane);
         listaSeleccionados.setModel(controller.getSeleccionadas());
     }//GEN-LAST:event_seleccionarActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        PedirInfo.setVisible(true);
+
+        //PedirInfo.setVisible(true);
         Imprimir doc = new Imprimir(text);
         /*
         switch(listaImpresiones.getSelectedIndex()){
             case 0:
                 doc.guardarPDF(textCodificado.getText());
+=======
+        String nombre = JOptionPane.showInputDialog(rootPane, "Nombre del archivo","");
+        
+        //validacion salvaje
+        if(nombre==null || nombre.isEmpty()){
+            return;
+        }
+        Imprimir doc = new Imprimir(nombre);
+        switch(listaImpresiones.getSelectedIndex()){
+            case 0:
+                //doc.guardarPDF();
+>>>>>>> ae80d58a3afc11daf62cbfc18673e5b3f93d33eb
                 break;
             case 1:
-                doc.guardarTXT(textCodificado.getText());
+                //doc.guardarTXT(textCodificado.getText());
                 break;
             case 2:
+<<<<<<< HEAD
                 doc.guardarXML(textCodificado.getText());
+=======
+                //doc.guardarXML();
+>>>>>>> ae80d58a3afc11daf62cbfc18673e5b3f93d33eb
                 break;
             default:
                 break;
         }*/
     }//GEN-LAST:event_imprimirActionPerformed
-
-    private void botonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOkActionPerformed
-        text=entrada.getText();
-        setVisible(false);
-    }//GEN-LAST:event_botonOkActionPerformed
-
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        setVisible(false);
-    }//GEN-LAST:event_cancelActionPerformed
 
     private void decodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decodeActionPerformed
         textDecodificado.setText(controller.codificar(textCodificado.getText()));
@@ -342,26 +295,20 @@ public class Codificador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog PedirInfo;
-    private javax.swing.JButton botonOk;
-    private javax.swing.JButton cancel;
     private javax.swing.JButton code;
     private javax.swing.JComboBox<String> codificaciones;
     private javax.swing.JButton decode;
     private javax.swing.JButton decodificar;
-    private javax.swing.JTextArea entrada;
     private javax.swing.JButton imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JComboBox<String> listaImpresiones;
     private javax.swing.JList<String> listaSeleccionados;
     private javax.swing.JButton seleccionar;
     private javax.swing.JTextArea textCodificado;
     private javax.swing.JTextArea textDecodificado;
-    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }
