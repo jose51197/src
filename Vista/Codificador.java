@@ -26,6 +26,10 @@ public class Codificador extends javax.swing.JFrame {
         initComponents();
         codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
         listaSeleccionados.setModel(new DefaultListModel());
+        
+        
+        
+        
     }
     
     /* Devuelve el campo de texto decodificado
@@ -208,6 +212,14 @@ public class Codificador extends javax.swing.JFrame {
     }//GEN-LAST:event_seleccionarActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
+
+        //PedirInfo.setVisible(true);
+        Imprimir doc = new Imprimir(text);
+        /*
+        switch(listaImpresiones.getSelectedIndex()){
+            case 0:
+                doc.guardarPDF(textCodificado.getText());
+=======
         String nombre = JOptionPane.showInputDialog(rootPane, "Nombre del archivo","");
         
         //validacion salvaje
@@ -218,16 +230,21 @@ public class Codificador extends javax.swing.JFrame {
         switch(listaImpresiones.getSelectedIndex()){
             case 0:
                 //doc.guardarPDF();
+>>>>>>> ae80d58a3afc11daf62cbfc18673e5b3f93d33eb
                 break;
             case 1:
                 //doc.guardarTXT(textCodificado.getText());
                 break;
             case 2:
+<<<<<<< HEAD
+                doc.guardarXML(textCodificado.getText());
+=======
                 //doc.guardarXML();
+>>>>>>> ae80d58a3afc11daf62cbfc18673e5b3f93d33eb
                 break;
             default:
                 break;
-        }
+        }*/
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void decodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decodeActionPerformed
@@ -265,6 +282,9 @@ public class Codificador extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        
+        Imprimir i = new Imprimir("Test");
+        i.guardarXML("Jose sodomita", "Telefonico");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
