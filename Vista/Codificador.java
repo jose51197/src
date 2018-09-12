@@ -5,12 +5,16 @@
  */
 package Vista;
 
+import Controlador.ControladorCodificador;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author jose5
  */
 public class Codificador extends javax.swing.JFrame {
-
+    private ControladorCodificador controller = new ControladorCodificador();
     
     
     /**
@@ -18,19 +22,21 @@ public class Codificador extends javax.swing.JFrame {
      */
     public Codificador() {
         initComponents();
+        codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
+        listaSeleccionados.setModel(new DefaultListModel());
     }
     
     /* Devuelve el campo de texto decodificado
     *  
     */ 
-    public String getTextoDecodificado(){
+    private String getTextoDecodificado(){
         return textDecodificado.getText();
     }
     
     /*
     Devuelve el texto en la caja de la derecha
     */
-    public String getTextoCodificado(){
+    private String getTextoCodificado(){
         return textCodificado.getText();
     }
     
@@ -53,7 +59,6 @@ public class Codificador extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         textDecodificado = new javax.swing.JTextArea();
         codificaciones = new javax.swing.JComboBox<>();
-        codificacionesSeleccionadas = new javax.swing.JComboBox<>();
         codificar = new javax.swing.JButton();
         decodificar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -61,6 +66,8 @@ public class Codificador extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaSeleccionados = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,8 +80,6 @@ public class Codificador extends javax.swing.JFrame {
         jScrollPane2.setViewportView(textDecodificado);
 
         codificaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        codificacionesSeleccionadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         codificar.setText("->");
         codificar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +103,13 @@ public class Codificador extends javax.swing.JFrame {
 
         jLabel2.setText("Seleccionadas");
 
+        listaSeleccionados.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(listaSeleccionados);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,16 +124,16 @@ public class Codificador extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(codificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(decodificar, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(decodificar, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                                     .addComponent(codificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(codificacionesSeleccionadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 354, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                            .addComponent(jScrollPane4))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -129,7 +141,7 @@ public class Codificador extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(25, 25, 25)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(727, Short.MAX_VALUE)))
+                    .addContainerGap(1075, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,13 +156,15 @@ public class Codificador extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(codificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(codificacionesSeleccionadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(codificar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(decodificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(codificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(codificar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(decodificar))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62)
                         .addComponent(jButton3)))
@@ -166,7 +180,8 @@ public class Codificador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void codificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codificarActionPerformed
-        
+        controller.seleccionar(codificaciones.getSelectedIndex());
+        listaSeleccionados.setModel(controller.getSeleccionadas());
     }//GEN-LAST:event_codificarActionPerformed
 
     /**
@@ -207,7 +222,6 @@ public class Codificador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> codificaciones;
-    private javax.swing.JComboBox<String> codificacionesSeleccionadas;
     private javax.swing.JButton codificar;
     private javax.swing.JButton decodificar;
     private javax.swing.JButton jButton3;
@@ -217,6 +231,8 @@ public class Codificador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JList<String> listaSeleccionados;
     private javax.swing.JTextArea textCodificado;
     private javax.swing.JTextArea textDecodificado;
     // End of variables declaration//GEN-END:variables
