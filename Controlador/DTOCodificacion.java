@@ -8,6 +8,7 @@ package Controlador;
 /**
  *
  * @author sergiesalas
+ * lo usare para la decodificacion
  */
 public class DTOCodificacion {
     private int idAlfabeto;
