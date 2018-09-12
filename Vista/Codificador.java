@@ -25,6 +25,10 @@ public class Codificador extends javax.swing.JFrame {
         initComponents();
         codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
         listaSeleccionados.setModel(new DefaultListModel());
+        
+        
+        
+        
     }
     
     /* Devuelve el campo de texto decodificado
@@ -265,19 +269,20 @@ public class Codificador extends javax.swing.JFrame {
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         PedirInfo.setVisible(true);
         Imprimir doc = new Imprimir(text);
+        /*
         switch(listaImpresiones.getSelectedIndex()){
             case 0:
-                doc.guardarPDF();
+                doc.guardarPDF(textCodificado.getText());
                 break;
             case 1:
                 doc.guardarTXT(textCodificado.getText());
                 break;
             case 2:
-                doc.guardarXML();
+                doc.guardarXML(textCodificado.getText());
                 break;
             default:
                 break;
-        }
+        }*/
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void botonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOkActionPerformed
@@ -324,6 +329,9 @@ public class Codificador extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        
+        Imprimir i = new Imprimir("Test");
+        i.guardarXML("Jose sodomita", "Telefonico");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
