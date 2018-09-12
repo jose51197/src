@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 
 /**
  *
- * @author jose5
+ * @author Oscar
  */
 public class Imprimir {
     String nombre;
