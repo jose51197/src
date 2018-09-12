@@ -12,5 +12,6 @@ package Controlador;
 public class DTOCodificacion {
     private int idAlfabeto;
     private String entrada;
+    private String salida;
     
 }

@@ -11,4 +11,5 @@ package Controlador;
  */
 public interface Validable {
     
+    public boolean validar(Object validable);
 }

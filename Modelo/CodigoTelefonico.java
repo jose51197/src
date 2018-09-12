@@ -15,7 +15,8 @@ public class CodigoTelefonico implements Codificable{
     private ArrayList<ArrayList<String>> simbolosEquivalentes;
 
 
-    public void distruibuirLetras(){
+    public void distruibuirLetras(Alfabeto alfabeto){
+        
         
     }
 
@@ -31,7 +32,7 @@ public class CodigoTelefonico implements Codificable{
 
     @Override
     public boolean seleccionar() {
-        return false;
+        return true;
     }
 
     @Override
