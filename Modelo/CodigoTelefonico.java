@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author sergiesalas
+ * @author Jose Gonzalez
  */
 public class CodigoTelefonico implements Codificable{
     private ArrayList<ArrayList<String>> simbolosEquivalentes;

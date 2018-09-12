@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author sergiesalas
+ * @author Jose Gonzalez
  */
 public interface Codificable {
     public String codificar(String entrada, Alfabeto alfabeto);
