@@ -33,5 +33,13 @@ public class Alfabeto {
     public ArrayList<String> getSimbolos() {
         return simbolos;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setSimbolos(ArrayList<String> simbolos) {
+        this.simbolos = simbolos;
+    }
     
 }
