@@ -9,6 +9,8 @@ import Modelo.*;
 import Vista.Codificador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 
 /**
  *
@@ -26,13 +28,17 @@ public class ControladorCodificador {
     }
     
     
-    public void seleccionar(int i){
+    public void seleccionar(int i,JRootPane root){
         Codificable seleccionado = codificaciones.get(i);
         if (seleccionado.seleccionar()){
-            //abro la ventana
-        }else{
-            seleccionadas.add(seleccionado);
+            String datos = JOptionPane.showInputDialog(root, seleccionado.solicitarDatosExtra(),"");
+            if(datos==null){
+                return;
+            }
+            //Sergie, hay q descomentar eso
+            //seleccionado.setDatosExtra(datos);
         }
+        seleccionadas.add(seleccionado);
     }
     
     public String[] getCodificaciones(){

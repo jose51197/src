@@ -203,7 +203,7 @@ public class Codificador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
-        controller.seleccionar(codificaciones.getSelectedIndex());
+        controller.seleccionar(codificaciones.getSelectedIndex(),rootPane);
         listaSeleccionados.setModel(controller.getSeleccionadas());
     }//GEN-LAST:event_seleccionarActionPerformed
 
@@ -217,13 +217,13 @@ public class Codificador extends javax.swing.JFrame {
         Imprimir doc = new Imprimir(nombre);
         switch(listaImpresiones.getSelectedIndex()){
             case 0:
-                doc.guardarPDF();
+                //doc.guardarPDF();
                 break;
             case 1:
-                doc.guardarTXT(textCodificado.getText());
+                //doc.guardarTXT(textCodificado.getText());
                 break;
             case 2:
-                doc.guardarXML();
+                //doc.guardarXML();
                 break;
             default:
                 break;
