@@ -28,10 +28,7 @@ public class Codificador extends javax.swing.JFrame {
     public Codificador() {
         initComponents();
         codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
-        listaSeleccionados.setModel(new DefaultListModel());
-        
-        
-        
+        listaSeleccionados.setModel(new DefaultListModel());        
         
     }
     
@@ -215,43 +212,12 @@ public class Codificador extends javax.swing.JFrame {
     }//GEN-LAST:event_seleccionarActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-
-        //PedirInfo.setVisible(true);
         Archivo doc = new TXT(text);
-        /*
-        switch(listaImpresiones.getSelectedIndex()){
-            case 0:
-                doc.guardarPDF(textCodificado.getText());
-=======
-        String nombre = JOptionPane.showInputDialog(rootPane, "Nombre del archivo","");
-        
-        //validacion salvaje
-        if(nombre==null || nombre.isEmpty()){
-            return;
-        }
-        Imprimir doc = new Imprimir(nombre);
-        switch(listaImpresiones.getSelectedIndex()){
-            case 0:
-                //doc.guardarPDF();
->>>>>>> ae80d58a3afc11daf62cbfc18673e5b3f93d33eb
-                break;
-            case 1:
-                //doc.guardarTXT(textCodificado.getText());
-                break;
-            case 2:
-<<<<<<< HEAD
-                doc.guardarXML(textCodificado.getText());
-=======
-                //doc.guardarXML();
->>>>>>> ae80d58a3afc11daf62cbfc18673e5b3f93d33eb
-                break;
-            default:
-                break;
-        }*/
+       
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void decodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decodeActionPerformed
-        textDecodificado.setText(controller.codificar(textCodificado.getText()));
+        textDecodificado.setText(controller.deCodificar(textCodificado.getText()));
     }//GEN-LAST:event_decodeActionPerformed
 
     private void codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActionPerformed
