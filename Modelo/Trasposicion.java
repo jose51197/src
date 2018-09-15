@@ -28,6 +28,9 @@ public class Trasposicion implements Codificable{
                 palabraTemp="";
                 continue;
             }
+            if(c=='\n'){
+                continue;
+            }
             palabraTemp=c+palabraTemp;
         }
         resultado+=palabraTemp;

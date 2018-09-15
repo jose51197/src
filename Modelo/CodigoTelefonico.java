@@ -77,9 +77,9 @@ public class CodigoTelefonico implements Codificable{
     //decoficador
     @Override
     public String decodificar(String entrada, Alfabeto alfabeto) {
-        System.out.println("llegue");
+
         try{
-        distribuirLetras(alfabeto);
+        distribuirLetras(alfabeto);    
         String resultado="";
             
         for( int i = 0; i<entrada.length(); i++) {
@@ -91,8 +91,7 @@ public class CodigoTelefonico implements Codificable{
                 resultado+=' ';
                 continue;
             }
-            resultado+=simbolosEquivalentes.get(Character.valueOf(c)-2).get(Character.valueOf(entrada.charAt(i+1))-1);
-            
+            resultado+=simbolosEquivalentes.get(Integer.parseInt(String.valueOf(c))-2).get(Integer.parseInt(String.valueOf(entrada.charAt(i+1)))-1);
             i++;
         }
         return resultado;

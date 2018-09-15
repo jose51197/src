@@ -78,7 +78,9 @@ public class Vigenere implements Codificable{
             if(indexDatosExtra==this.datosExtra.length()){
                 indexDatosExtra=0;
             }
-            indexSimbolos=alfabeto.getIndexSimbolo(c)-offset;
+            System.out.println(alfabeto.getIndexSimbolo(c)+" "+c);
+            indexSimbolos=alfabeto.getIndexSimbolo(c)+offset;
+            System.out.println(indexSimbolos+" "+c);
             if(indexSimbolos<0){
                 indexSimbolos= -indexSimbolos%(simbolos.size());
                 if(indexSimbolos!=0){
