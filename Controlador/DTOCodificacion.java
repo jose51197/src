@@ -5,6 +5,10 @@
  */
 package Controlador;
 
+import Modelo.*;
+import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+
 /**
  *
  * @author sergiesalas
@@ -14,6 +18,26 @@ public class DTOCodificacion {
     private int idAlfabeto;
     private String entrada;
     private String salida;
+    private int opcionImprimir;
+    private Archivo escogido;
+
+    public Archivo getEscogido() {
+        return escogido;
+    }
+    
+    
+    
+    public void setImpresion(int opcion, JRootPane root){
+        String nombre = JOptionPane.showInputDialog(root, "Nombre archivo","");
+        if(nombre==null){
+            escogido=null;
+        }
+        switch(opcion){
+            case 0: escogido = new PDF(nombre);break;
+            case 1: escogido = new TXT(nombre);break;
+            case 2: escogido = new XML(nombre);break;
+        }
+    }
 
     public String getEntrada() {
         return entrada;

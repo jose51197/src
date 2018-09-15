@@ -18,13 +18,24 @@ import javax.swing.JRootPane;
 public class ControladorCodificador {
     private ArrayList<Codificable> codificaciones= new ArrayList<>();
     private ArrayList<Codificable> seleccionadas = new ArrayList<>();
+    private ArrayList<String> metodos;
+    private ArrayList<String> salida;
+    private String[] impresiones = new String[3];
     private Alfabeto alfabeto;
     private DTOCodificacion dto;
     
     public ControladorCodificador() {
+        
+        //Codificaciones
         codificaciones.add(new CodigoTelefonico());
         codificaciones.add(new Trasposicion());
         codificaciones.add(new Vigenere());
+        
+        //Impresiones
+        impresiones[0]="PDF";
+        impresiones[1]="TXT";
+        impresiones[2]="XML";
+        
         
         DaoAlfabetos dao= new DaoAlfabetos();
         dao.cargarDatos();
@@ -56,6 +67,19 @@ public class ControladorCodificador {
        return getStringFromArray(codificaciones);
     }
     
+    public String[] getImpresiones(){
+        return impresiones;
+    }
+    
+    public void imprimir(){
+        if(dto.getEscogido()==null){
+            return;
+        }
+        for(int i=0;i<seleccionadas.size();i++){
+            dto.getEscogido().guardarCambios(metodos.get(i),salida.get(i));
+        }
+    }
+    
     
     public DefaultListModel getSeleccionadas(){
        DefaultListModel model = new DefaultListModel();
@@ -67,25 +91,23 @@ public class ControladorCodificador {
     
     public String codificar(){
        String result="";
+       String all="";
+       metodos=new ArrayList<>();
+       salida=new ArrayList<>();
        for(int i =0;i<seleccionadas.size();i++){
-           result+=seleccionadas.get(i).codificar(dto.getEntrada(), alfabeto) + "\n";
+           result=seleccionadas.get(i).codificar(dto.getEntrada(), alfabeto) + "\n";
+           metodos.add(seleccionadas.get(i).toString());
+           salida.add(result);
+           all+=result;
        }
-       return result;
+       return all;
     }
     
     public String deCodificar(){
        return "por implementar";
     }
     
-    public void imprimir(String texto, int opcion){
-        
-        switch(opcion){
-            case 0: break;
-            case 1: break;
-            case 2: break;
-        }
-        
-    }
+   
     
     private String[] getStringFromArray(ArrayList<Codificable> objects){
        String[] nombres=new String[objects.size()];

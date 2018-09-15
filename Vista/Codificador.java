@@ -8,12 +8,9 @@ package Vista;
 import Controlador.ControladorCodificador;
 import Controlador.DTOCodificacion;
 import Controlador.DaoAlfabetos;
-import Modelo.*;
-import Modelo.TXT;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +27,7 @@ public class Codificador extends javax.swing.JFrame {
     public Codificador() {
         initComponents();
         codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
+        listaImpresiones.setModel(new DefaultComboBoxModel(controller.getImpresiones()));
         listaSeleccionados.setModel(new DefaultListModel());       
         controller.setDto(dto);
         
@@ -195,8 +193,8 @@ public class Codificador extends javax.swing.JFrame {
     }//GEN-LAST:event_seleccionarActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        Archivo doc = new TXT(text);
-       
+        dto.setImpresion(listaImpresiones.getSelectedIndex(),rootPane);
+        controller.imprimir();
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void decodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decodeActionPerformed

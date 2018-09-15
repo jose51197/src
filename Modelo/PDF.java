@@ -14,6 +14,10 @@ public class PDF extends Archivo {
     public PDF(String pNombre, String pCarpeta) {
         super(pNombre, pCarpeta);
     }
+    
+    public PDF(String pNombre) {
+        super(pNombre);
+    }
 
     @Override
     public void guardarCambios(String pTexto, String pCodificacion) {
