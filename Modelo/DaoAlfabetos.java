@@ -48,8 +48,11 @@ public class DaoAlfabetos {
                 ArrayList tCaracteres = new ArrayList<>();
                 for (int lecturaCaracter = 2; lecturaCaracter < columnas.length; lecturaCaracter++)
                     tCaracteres.add(columnas[lecturaCaracter]);
-                this.datos.add(new Alfabeto(Integer.parseInt(columnas[0]), columnas[1], tCaracteres ));
-                System.out.println(linea);
+                
+                Alfabeto a = new Alfabeto(Integer.parseInt(columnas[0]), columnas[1], tCaracteres );
+                System.out.println(a.toString());
+                this.datos.add(a);
+                
             }
 
             bufferLectura.close();

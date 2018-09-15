@@ -42,4 +42,15 @@ public class Alfabeto {
         this.simbolos = simbolos;
     }
     
+    @Override
+    public String toString(){
+        String resultado = "ID: " + Integer.toString(this.id) + "\n";
+        resultado += "Nombre: " + this.nombre + "\n";
+        resultado += "Simbolos: ";
+        for(int i=0;i<this.simbolos.size();i++){
+            resultado+=simbolos.get(i);
+        }
+        return resultado;
+    }
+    
 }
