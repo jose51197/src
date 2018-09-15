@@ -8,8 +8,7 @@ package Vista;
 import Controlador.ControladorCodificador;
 import Controlador.DTOCodificacion;
 import Controlador.DaoAlfabetos;
-import Modelo.Archivo;
-import Modelo.Imprimir;
+import Modelo.*;
 import Modelo.TXT;
 
 import javax.swing.DefaultComboBoxModel;
@@ -237,10 +236,7 @@ public class Codificador extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
-        Imprimir i = new Imprimir("Test");
-        i.guardarXML("Jose", "Telefonico");
-        
+           
         DaoAlfabetos dao = new DaoAlfabetos();
         dao.getAlfabeto(0);
 

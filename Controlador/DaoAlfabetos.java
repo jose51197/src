@@ -5,14 +5,10 @@
  */
 package Controlador;
 
-import Modelo.Alfabeto;
-import Modelo.Imprimir;
+import Modelo.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,11 +23,9 @@ import java.util.List;
 public class DaoAlfabetos {
     
     private List<Alfabeto> datos;
-    Imprimir imprimir;
     
     public DaoAlfabetos(){
         this.datos = new ArrayList<>();
-        this.imprimir = new Imprimir("alfabetos");
     }
     
     public void cargarDatos() {
