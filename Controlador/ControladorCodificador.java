@@ -104,7 +104,12 @@ public class ControladorCodificador {
     }
     
     public String deCodificar(){
-       return "por implementar";
+       
+       if(seleccionadas.size()==1){
+           return seleccionadas.get(0).decodificar(dto.getSalida(), alfabeto);
+       }else{
+           return "Solo 1 metodo para decodificar";
+       }
     }
     
    
