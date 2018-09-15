@@ -25,6 +25,10 @@ public class ControladorCodificador {
         codificaciones.add(new CodigoTelefonico());
         codificaciones.add(new Trasposicion());
         codificaciones.add(new Vigenere());
+        DaoAlfabetos dao= new DaoAlfabetos();
+        dao.cargarDatos();
+        alfabeto=dao.getAlfabeto(1);
+        alfabeto.toString();
     }
     
     

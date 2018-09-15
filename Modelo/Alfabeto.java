@@ -42,4 +42,22 @@ public class Alfabeto {
         this.simbolos = simbolos;
     }
     
+    public int getIndexSimbolo(char c){
+        for(int i=0;i<this.simbolos.size();i++){
+            if (String.valueOf(c).equals(simbolos.get(i))){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    @Override
+    public String toString(){
+        String resultado="";
+        for(int i=0;i<this.simbolos.size();i++){
+            resultado+=simbolos.get(i);
+        }
+        return resultado;
+    }
+    
 }

@@ -32,6 +32,7 @@ public class CodigoTelefonico implements Codificable{
             }
             while(indexAux!=0){
                 simbolosEquivalentes.get(i).add(simbolos.get(indexSimbolos));
+                indexAux--;
                 indexSimbolos++;
             }
         }
@@ -42,10 +43,13 @@ public class CodigoTelefonico implements Codificable{
         if (entrada==' '){
             return "*";
         }
+        if (entrada=='\n'){
+            return "";
+        }
         for(int i=0;i<=7;i++){
             ArrayList<String> lista= this.simbolosEquivalentes.get(i);
             for(int j=0;j<lista.size();j++){
-                if(lista.get(j).charAt(0)==entrada){
+                if(lista.get(j).equals(String.valueOf(entrada))){
                     return ' '+Integer.toString(i+2)+Integer.toString(j+1)+' ';
                 }
             }
@@ -56,6 +60,7 @@ public class CodigoTelefonico implements Codificable{
     //codificador
     @Override
     public String codificar(String entrada, Alfabeto alfabeto) {
+        try{
         distribuirLetras(alfabeto);
         String resultado="";
         for( int i = 0; i<entrada.length(); i++) {
@@ -63,26 +68,38 @@ public class CodigoTelefonico implements Codificable{
             resultado+= obtenerValor(c);
         }
         return resultado;
+        }
+        catch(Exception e){
+            return "Vale por una codificacion:Codigo Telefonico";
+        }
     }
 
     //decoficador
     @Override
     public String decodificar(String entrada, Alfabeto alfabeto) {
+        System.out.println("llegue");
+        try{
         distribuirLetras(alfabeto);
         String resultado="";
+            
         for( int i = 0; i<entrada.length(); i++) {
             char c = entrada.charAt(i);
-            if(c==' '){
+            if(c==' ' || c=='\n'){
                 continue;
             }
             if(c=='*'){
                 resultado+=' ';
                 continue;
             }
-            resultado+=simbolosEquivalentes.get(Character.valueOf(c)).get(Character.valueOf(entrada.charAt(i+1)));
+            resultado+=simbolosEquivalentes.get(Character.valueOf(c)-2).get(Character.valueOf(entrada.charAt(i+1))-1);
+            
             i++;
         }
         return resultado;
+        }
+        catch(Exception e){
+            return "Vale por una decodificacion: Codigo Telefonico";
+        }
     }
 
     @Override

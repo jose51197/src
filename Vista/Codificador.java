@@ -284,7 +284,7 @@ public class Codificador extends javax.swing.JFrame {
         //</editor-fold>
         
         Imprimir i = new Imprimir("Test");
-        i.guardarXML("Jose sodomita", "Telefonico");
+        i.guardarXML("Jose", "Telefonico");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

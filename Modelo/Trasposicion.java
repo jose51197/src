@@ -18,6 +18,7 @@ public class Trasposicion implements Codificable{
     //codificador
     @Override
     public String codificar(String entrada, Alfabeto alfabeto) {
+        try{
         String resultado="";
         String palabraTemp="";
         for( int i = 0; i<entrada.length(); i++) {
@@ -31,11 +32,16 @@ public class Trasposicion implements Codificable{
         }
         resultado+=palabraTemp;
         return resultado;
+        }
+        catch(Exception e){
+            return "Vale por una codificacion: Trasposicion";
+        }
     }
 
     //decodificador
     @Override
     public String decodificar(String entrada, Alfabeto alfabeto) {
+        try{
         String resultado="";
         String palabraTemp="";
         for( int i = 0; i<entrada.length(); i++) {
@@ -49,6 +55,10 @@ public class Trasposicion implements Codificable{
         }
         resultado+=palabraTemp;
         return resultado;
+        }
+        catch(Exception e){
+            return "Vale por una decodificacion: Trasposicion";
+        }
     }
 
     //funcion que de nota que se necesitan datos extra, en este caso no se necesita
