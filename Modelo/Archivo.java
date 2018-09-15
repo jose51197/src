@@ -64,12 +64,4 @@ public abstract class Archivo {
     
     public abstract void guardarCambios(String pTexto, String pCodificacion);
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
->>>>>>> ab3480099ac39da145d7e2e1aa391092e0ad5929
-=======
->>>>>>> ab3480099ac39da145d7e2e1aa391092e0ad5929
-    
 }
