@@ -6,7 +6,10 @@
 package Vista;
 
 import Controlador.ControladorCodificador;
-import Modelo.Imprimir;
+import Modelo.DaoAlfabetos;
+import Modelo.Archivo;
+import Modelo.TXT;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -214,7 +217,7 @@ public class Codificador extends javax.swing.JFrame {
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
 
         //PedirInfo.setVisible(true);
-        Imprimir doc = new Imprimir(text);
+        Archivo doc = new TXT(text);
         /*
         switch(listaImpresiones.getSelectedIndex()){
             case 0:
@@ -283,8 +286,14 @@ public class Codificador extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         
+<<<<<<< HEAD
         Imprimir i = new Imprimir("Test");
         i.guardarXML("Jose", "Telefonico");
+=======
+        
+        DaoAlfabetos dao = new DaoAlfabetos();
+        dao.getAlfabeto(0);
+>>>>>>> 039b379971ef16147f64a78261aefc27adb442e3
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
