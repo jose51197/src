@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.*;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
@@ -90,15 +91,25 @@ public class ControladorCodificador {
     }
     
     public String codificar(){
+        
+       if(!alfabeto.validar(dto.getEntrada())){
+           return "Alfabeto no valido";
+       }
+       
        String result="";
        String all="";
+       all+=new Date().toString()+"\n";
        metodos=new ArrayList<>();
        salida=new ArrayList<>();
+       
+       
+       
+       
        for(int i =0;i<seleccionadas.size();i++){
            result=seleccionadas.get(i).codificar(dto.getEntrada(), alfabeto) + "\n";
            metodos.add(seleccionadas.get(i).toString());
            salida.add(result);
-           all+=result;
+           all+=seleccionadas.get(i).toString() + "\n" +result;
        }
        return all;
     }

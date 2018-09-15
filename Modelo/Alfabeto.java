@@ -5,13 +5,14 @@
  */
 package Modelo;
 
+import Controlador.Validable;
 import java.util.ArrayList;
 
 /**
  *
  * @author sergiesalas
  */
-public class Alfabeto {
+public class Alfabeto implements Validable{
     private int id;
     private String nombre;
     private ArrayList<String> simbolos;
@@ -33,6 +34,28 @@ public class Alfabeto {
     public ArrayList<String> getSimbolos() {
         return simbolos;
     }
+    
+    @Override
+    public boolean validar(Object frase){
+        char[] chars = ((String)frase).toCharArray();
+        boolean estaba;
+        for(int i=0; i<chars.length;i++){
+            estaba=false;
+            for(int j =0;j<simbolos.size();j++){
+                if(simbolos.get(j).equals(String.valueOf(chars[i]))){
+                    estaba=true;
+                    break;
+                }
+            }
+            if(!estaba){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+    
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

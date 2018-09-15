@@ -10,6 +10,5 @@ package Controlador;
  * @author sergiesalas
  */
 public interface Validable {
-    
     public boolean validar(Object validable);
 }
