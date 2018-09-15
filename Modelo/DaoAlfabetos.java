@@ -25,7 +25,9 @@ import java.util.List;
 public class DaoAlfabetos {
     
     private List<Alfabeto> datos;
-    Imprimir imprimir;
+    private Imprimir imprimir;
+    public final static String CARPETA  = "Alfabetos";
+    public final static String NOMBRE_ARCHIVO = "Registros";
     
     public DaoAlfabetos(){
         this.datos = new ArrayList<>();
@@ -37,7 +39,7 @@ public class DaoAlfabetos {
         BufferedReader bufferLectura;
         
         try {
-            bufferLectura = new BufferedReader(new FileReader("alfabetos.txt"));
+            bufferLectura = new BufferedReader(new FileReader(new File("").getAbsolutePath()+ "//"+ CARPETA  +"//"+NOMBRE_ARCHIVO+".txt"));
             String linea;
             
             while((linea = bufferLectura.readLine()) != null){
@@ -103,6 +105,7 @@ public class DaoAlfabetos {
     }
     
     public Alfabeto getAlfabeto(int pId){
+        cargarDatos(); //
         for(Alfabeto alfabetoActual : this.datos){
             if (alfabetoActual.getId() == pId)
                 return alfabetoActual;
@@ -143,7 +146,7 @@ public class DaoAlfabetos {
     
     private void crearArchivo(String pDatos){
         try {
-            PrintWriter out = new PrintWriter("alfabeto.txt");
+            PrintWriter out = new PrintWriter(new File("").getAbsolutePath()+ "//"+ CARPETA  +"//"+NOMBRE_ARCHIVO+".txt");
             out.println(pDatos);
             out.close();
         } catch (Exception e) {

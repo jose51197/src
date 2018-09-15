@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.ControladorCodificador;
+import Modelo.DaoAlfabetos;
 import Modelo.Imprimir;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -285,6 +286,9 @@ public class Codificador extends javax.swing.JFrame {
         
         Imprimir i = new Imprimir("Test");
         i.guardarXML("Jose sodomita", "Telefonico");
+        
+        DaoAlfabetos dao = new DaoAlfabetos();
+        dao.getAlfabeto(0);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
