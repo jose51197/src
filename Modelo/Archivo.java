@@ -64,11 +64,5 @@ public abstract class Archivo {
     
     public abstract void guardarCambios(String pTexto, String pCodificacion);
     
-  
-    public void guardarPDF(String pTexto, String pCodificacion){
-        
-        //byte[] entityBytes = this.nombre.getBytes();
-        //Files.write("test.pdf", entityBytes);
-    }
     
 }
