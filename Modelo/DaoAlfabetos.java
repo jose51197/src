@@ -25,13 +25,13 @@ import java.util.List;
 public class DaoAlfabetos {
     
     private List<Alfabeto> datos;
-    private Imprimir imprimir;
+    private Archivo imprimir;
     public final static String CARPETA  = "Alfabetos";
     public final static String NOMBRE_ARCHIVO = "Registros";
     
     public DaoAlfabetos(){
         this.datos = new ArrayList<>();
-        this.imprimir = new Imprimir("alfabetos");
+        this.imprimir = new TXT("alfabetos");
     }
     
     public void cargarDatos() {
