@@ -9,8 +9,10 @@ import Modelo.Alfabeto;
 import Modelo.Imprimir;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,13 +27,11 @@ import java.util.List;
 public class DaoAlfabetos {
     
     private List<Alfabeto> datos;
-    private Archivo imprimir;
-    public final static String CARPETA  = "Alfabetos";
-    public final static String NOMBRE_ARCHIVO = "Registros";
+    Imprimir imprimir;
     
     public DaoAlfabetos(){
         this.datos = new ArrayList<>();
-        this.imprimir = new TXT("alfabetos");
+        this.imprimir = new Imprimir("alfabetos");
     }
     
     public void cargarDatos() {
@@ -39,7 +39,7 @@ public class DaoAlfabetos {
         BufferedReader bufferLectura;
         
         try {
-            bufferLectura = new BufferedReader(new FileReader(new File("").getAbsolutePath()+ "//"+ CARPETA  +"//"+NOMBRE_ARCHIVO+".txt"));
+            bufferLectura = new BufferedReader(new FileReader("alfabetos.txt"));
             String linea;
             
             while((linea = bufferLectura.readLine()) != null){
@@ -48,11 +48,8 @@ public class DaoAlfabetos {
                 ArrayList tCaracteres = new ArrayList<>();
                 for (int lecturaCaracter = 2; lecturaCaracter < columnas.length; lecturaCaracter++)
                     tCaracteres.add(columnas[lecturaCaracter]);
-                
-                Alfabeto a = new Alfabeto(Integer.parseInt(columnas[0]), columnas[1], tCaracteres );
-                System.out.println(a.toString());
-                this.datos.add(a);
-                
+                this.datos.add(new Alfabeto(Integer.parseInt(columnas[0]), columnas[1], tCaracteres ));
+                System.out.println(linea);
             }
 
             bufferLectura.close();
@@ -108,7 +105,6 @@ public class DaoAlfabetos {
     }
     
     public Alfabeto getAlfabeto(int pId){
-        cargarDatos(); //
         for(Alfabeto alfabetoActual : this.datos){
             if (alfabetoActual.getId() == pId)
                 return alfabetoActual;
@@ -149,7 +145,7 @@ public class DaoAlfabetos {
     
     private void crearArchivo(String pDatos){
         try {
-            PrintWriter out = new PrintWriter(new File("").getAbsolutePath()+ "//"+ CARPETA  +"//"+NOMBRE_ARCHIVO+".txt");
+            PrintWriter out = new PrintWriter("alfabeto.txt");
             out.println(pDatos);
             out.close();
         } catch (Exception e) {

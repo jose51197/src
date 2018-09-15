@@ -42,7 +42,6 @@ public class Alfabeto {
         this.simbolos = simbolos;
     }
     
-<<<<<<< HEAD
     public int getIndexSimbolo(char c){
         for(int i=0;i<this.simbolos.size();i++){
             if (String.valueOf(c).equals(simbolos.get(i))){
@@ -54,18 +53,14 @@ public class Alfabeto {
     
     @Override
     public String toString(){
-        String resultado="";
-=======
-    @Override
-    public String toString(){
         String resultado = "ID: " + Integer.toString(this.id) + "\n";
         resultado += "Nombre: " + this.nombre + "\n";
         resultado += "Simbolos: ";
->>>>>>> 039b379971ef16147f64a78261aefc27adb442e3
+
         for(int i=0;i<this.simbolos.size();i++){
             resultado+=simbolos.get(i);
         }
         return resultado;
     }
-    
 }
+
