@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.ControladorCodificador;
+import Controlador.DTOCodificacion;
 import Controlador.DaoAlfabetos;
 import Modelo.Archivo;
 import Modelo.Imprimir;
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 public class Codificador extends javax.swing.JFrame {
     private ControladorCodificador controller = new ControladorCodificador();
     private String text;
+    private DTOCodificacion dto = new DTOCodificacion();
     
     /**
      * Creates new form Codificador
@@ -29,29 +31,10 @@ public class Codificador extends javax.swing.JFrame {
     public Codificador() {
         initComponents();
         codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
-        listaSeleccionados.setModel(new DefaultListModel());        
+        listaSeleccionados.setModel(new DefaultListModel());       
+        controller.setDto(dto);
         
     }
-    
-    /* Devuelve el campo de texto decodificado
-    *  
-    */ 
-    private String getTextoDecodificado(){
-        return textDecodificado.getText();
-    }
-    
-    /*
-    Devuelve el texto en la caja de la derecha
-    */
-    private String getTextoCodificado(){
-        return textCodificado.getText();
-    }
-    
-    /*
-    
-    */
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -218,11 +201,13 @@ public class Codificador extends javax.swing.JFrame {
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void decodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decodeActionPerformed
-        textDecodificado.setText(controller.deCodificar(textCodificado.getText()));
+        dto.setSalida(textCodificado.getText());
+        textDecodificado.setText(controller.deCodificar());
     }//GEN-LAST:event_decodeActionPerformed
 
     private void codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActionPerformed
-        textCodificado.setText(controller.codificar(textDecodificado.getText()));
+        dto.setEntrada(textDecodificado.getText());
+        textCodificado.setText(controller.codificar());
     }//GEN-LAST:event_codeActionPerformed
 
     /**

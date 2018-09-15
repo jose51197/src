@@ -29,5 +29,5 @@ public class DTOCodificacion {
 
     public void setSalida(String salida) {
         this.salida = salida;
-    }    
+    }
 }

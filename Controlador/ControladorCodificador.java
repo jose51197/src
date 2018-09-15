@@ -6,7 +6,6 @@
 package Controlador;
 
 import Modelo.*;
-import Vista.Codificador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -20,15 +19,23 @@ public class ControladorCodificador {
     private ArrayList<Codificable> codificaciones= new ArrayList<>();
     private ArrayList<Codificable> seleccionadas = new ArrayList<>();
     private Alfabeto alfabeto;
+    private DTOCodificacion dto;
     
     public ControladorCodificador() {
         codificaciones.add(new CodigoTelefonico());
         codificaciones.add(new Trasposicion());
         codificaciones.add(new Vigenere());
+        
         DaoAlfabetos dao= new DaoAlfabetos();
         dao.cargarDatos();
         alfabeto=dao.getAlfabeto(1);
         alfabeto.toString();
+        
+        
+    }
+
+    public void setDto(DTOCodificacion dto) {
+        this.dto = dto;
     }
     
     
@@ -58,20 +65,26 @@ public class ControladorCodificador {
        return model;
     }
     
-    public String codificar(String text){
+    public String codificar(){
        String result="";
        for(int i =0;i<seleccionadas.size();i++){
-           result+=seleccionadas.get(i).codificar(text, alfabeto) + "\n";
+           result+=seleccionadas.get(i).codificar(dto.getEntrada(), alfabeto) + "\n";
        }
        return result;
     }
     
-    public String deCodificar(String text){
+    public String deCodificar(){
        return "por implementar";
     }
     
-    public void imprimir(String texto){
-       
+    public void imprimir(String texto, int opcion){
+        
+        switch(opcion){
+            case 0: break;
+            case 1: break;
+            case 2: break;
+        }
+        
     }
     
     private String[] getStringFromArray(ArrayList<Codificable> objects){
