@@ -25,6 +25,7 @@ public class Codificador extends javax.swing.JFrame {
      * Creates new form Codificador
      */
     public Codificador() {
+        System.out.println("g");
         initComponents();
         codificaciones.setModel(new DefaultComboBoxModel(controller.getCodificaciones()));
         listaImpresiones.setModel(new DefaultComboBoxModel(controller.getImpresiones()));

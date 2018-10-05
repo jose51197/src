@@ -40,10 +40,10 @@ public class ControladorCodificador {
         
         DaoAlfabetos dao= new DaoAlfabetos();
         dao.cargarDatos();
+        
+        //Definir alfabeto standard
         alfabeto=dao.getAlfabeto(1);
         alfabeto.toString();
-        
-        
     }
 
     public void setDto(DTOCodificacion dto) {
