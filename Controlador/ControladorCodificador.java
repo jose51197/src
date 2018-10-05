@@ -8,6 +8,8 @@ package Controlador;
 import Modelo.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
@@ -28,9 +30,19 @@ public class ControladorCodificador {
     public ControladorCodificador() {
         
         //Codificaciones
-        codificaciones.add(new CodigoTelefonico());
-        codificaciones.add(new Trasposicion());
-        codificaciones.add(new Vigenere());
+        TipoCodificable[] tipos=TipoCodificable.values();
+        String paqueteCodificable=Codificable.class.getPackage().getName();
+        for(int i=0;i<tipos.length;i++){
+            try {
+                codificaciones.add((Codificable)Class.forName(paqueteCodificable+"."+tipos[i].toString()).newInstance());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControladorCodificador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(ControladorCodificador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(ControladorCodificador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         //Impresiones
         impresiones[0]="PDF";
