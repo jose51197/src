@@ -10,5 +10,5 @@ package Modelo;
  * @author sergiesalas
  */
 public enum TipoCodificable {
-    CodigoTelefonicos,Vigenere,Trasposicion
+    CodigoTelefonico,Vigenere,Trasposicion
 }
