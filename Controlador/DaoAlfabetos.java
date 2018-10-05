@@ -23,6 +23,9 @@ import java.util.List;
 public class DaoAlfabetos {
     
     private List<Alfabeto> datos;
+    public final String ALFABETO_ESTANDAR = "1;Standard;a;b;c;d;e;f;g;h;i;j;k;l;m;n;o;p;q;r;s;t;u;v;w;r;s;t;u;v;w;x;y;z; ;A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z";
+    public final String NOMBRE_ARCHIVO = "alfabetos.txt";
+    
     
     public DaoAlfabetos(){
         this.datos = new ArrayList<>();
@@ -33,7 +36,7 @@ public class DaoAlfabetos {
         BufferedReader bufferLectura;
         
         try {
-            bufferLectura = new BufferedReader(new FileReader("alfabetos.txt"));
+            bufferLectura = new BufferedReader(new FileReader(NOMBRE_ARCHIVO));
             String linea;
             
             while((linea = bufferLectura.readLine()) != null){
@@ -50,7 +53,8 @@ public class DaoAlfabetos {
             
         } catch (FileNotFoundException e) {
             System.out.println(e.toString());
-            
+            crearArchivo();
+            cargarDatos();
         } catch (IOException e) {
             System.out.println(e.toString());
         }
@@ -67,7 +71,7 @@ public class DaoAlfabetos {
        
         }
         
-        actualizarArchivo();
+        actualizarArchivo(pAlfabeto);
         
         //Guardar datos en un txt
         return false;
@@ -82,9 +86,8 @@ public class DaoAlfabetos {
        
         }
         
-        actualizarArchivo();
-        
-        //Guardar datos en un txt
+        //actualizarArchivo();
+        //Elimnar de un db el alfabeto
         return false;
     }
     
@@ -93,7 +96,7 @@ public class DaoAlfabetos {
             return false;
         this.datos.add(pAlfabeto);
         
-        actualizarArchivo();
+        actualizarArchivo(pAlfabeto);
         //Guardar datos en un txt
         return true;
     }
@@ -108,43 +111,45 @@ public class DaoAlfabetos {
     }
     
     
-    private void actualizarArchivo(){
-        String datosTXT = "";
-        
-        for(Alfabeto alfabetoActual : this.datos){
-            datosTXT += Integer.toString(alfabetoActual.getId());
-            datosTXT += ";" + alfabetoActual.getNombre();
-            
-            //Guarda cada caracteres dentro del csv
-            for (String caracterActual : alfabetoActual.getSimbolos())
-                datosTXT += ";" + caracterActual;
-           
-            datosTXT += "\n";
-        }
-        
-
-        try(FileWriter fw = new FileWriter("alfabeto.txt", true);
+    private void actualizarArchivo(Alfabeto pAlfabeto){
+        String datosTXT = parserAlfabeto(pAlfabeto);
+      
+        try {
+            FileWriter fw = new FileWriter(NOMBRE_ARCHIVO, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
-        {
-            out.println(datosTXT.substring(0, datosTXT.length()-1));
-            out.close();
-           
+            PrintWriter out = new PrintWriter(bw);
+            out.println(datosTXT);
+       
         } catch (IOException e) {
             System.out.println(e.toString());
-            crearArchivo(datosTXT.substring(0, datosTXT.length()-1));
-        }
-
+            crearArchivo();
+            actualizarArchivo(pAlfabeto);
+        } 
     }
     
-    private void crearArchivo(String pDatos){
+    private void crearArchivo(){
         try {
-            PrintWriter out = new PrintWriter("alfabeto.txt");
-            out.println(pDatos);
+            PrintWriter out = new PrintWriter(NOMBRE_ARCHIVO);
+            out.println(ALFABETO_ESTANDAR);
             out.close();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+    
+    private String parserAlfabeto(Alfabeto pAlfabeto){
+        String datosTXT = "";
+        
+        datosTXT += Integer.toString(pAlfabeto.getId());
+        datosTXT += ";" + pAlfabeto.getNombre();
+
+        //Guarda cada caracteres dentro del csv
+        for (String caracterActual : pAlfabeto.getSimbolos())
+            datosTXT += ";" + caracterActual;
+
+        datosTXT += "\n";
+        
+        return datosTXT;
     }
     
 
