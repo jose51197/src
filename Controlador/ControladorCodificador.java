@@ -54,7 +54,7 @@ public class ControladorCodificador {
         dao.cargarDatos();
         
         //Definir alfabeto standard
-        alfabeto=dao.getAlfabeto(1);
+        alfabeto=dao.getAlfabeto(0);
         alfabeto.toString();
     }
 

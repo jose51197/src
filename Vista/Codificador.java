@@ -8,6 +8,7 @@ package Vista;
 import Controlador.ControladorCodificador;
 import Controlador.DTOCodificacion;
 import Controlador.DaoAlfabetos;
+import Modelo.Generador;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -238,6 +239,9 @@ public class Codificador extends javax.swing.JFrame {
            
         DaoAlfabetos dao = new DaoAlfabetos();
         dao.getAlfabeto(0);
+        dao.cargarDatos();
+        new Generador(dao.getAlfabeto(1));
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
